@@ -14,7 +14,7 @@
 > e: murat.atak.21@yandex.com
 
 
-# Required plugins
+# Required
 
 > [Bootstrap] : http://getbootstrap.com
 
