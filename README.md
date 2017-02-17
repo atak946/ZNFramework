@@ -35,6 +35,47 @@
 echo MForm::attribute("value")->element("name","value");
 ```
 
+# Two way usage
+
+### First: 
+
+```sh
+
+echo MForm::[all html attributes]->element("name","value");
+
+example:
+
+echo MForm::id("element")->icon("fa fa-user")->[... ETC ...]->text("name","");
+
+```
+
+### And OTHER
+
+```sh
+
+echo MForm::element("name","value",[
+
+"attribute-name" => "value",
+
+"attribute-name2" => "value",
+
+... ETC ...
+
+]);
+
+example:
+
+echo MForm::text("name","value",[
+
+"data-toggle" => "tooltip",
+"icon" => "fa fa-user",
+"id" => "TEXT",
+"style" => "color:red",
+... ETC ...
+]);
+
+```
+
 # col and rows (auto closing row div step to col 12)
 
 ```sh
