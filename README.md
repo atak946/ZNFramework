@@ -160,7 +160,7 @@ output:
 ```sh
 echo MForm::modal(
 [
-    "ajaxurl" => "Http://..', // link of your modal content
+    "ajaxurl" => "Http://..", // link of your modal content
     "close" => "true", //AFTER SUBMİT CLOSE MODAL
     "refresh" => "false", // AFTER SUBMİT REFRESH PAGE
     "width" => "modal-lg", // MODAL SİZE
