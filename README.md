@@ -229,26 +229,48 @@ echo MForm::dom("") //Datatable buttons
 # AND ETC ELEMENTS ..
 
 > echo MForm::hidden("name","value");
+
 > echo MForm::select("name","value");
+
 > echo MForm::email("name","value");
+
 > echo MForm::tel("name","value");
+
 > echo MForm::textarea("name","value");
+
 > echo MForm::file("name","value");
+
 > echo MForm::color("name","value");
+
 > echo MForm::image("name","value");
+
 > echo MForm::url("name","value");
+
 > echo MForm::month("name","value");
+
 > echo MForm::number("name","value");
+
 > echo MForm::password("name","value");
+
 > echo MForm::search("name","value");
+
 > echo MForm::week("name","value");
+
 > echo MForm::time("name","value");
+
 > echo MForm::datetime("name","value");
+
 > echo MForm::datetimeLocal("name","value");
+
 > echo MForm::checkbox("name","value");
+
 > echo MForm::radio("name","value");
+
 > echo MForm::submit("name","value");
+
 > echo MForm::reset("name","value");
+
 > echo MForm::link("name","value");
+
 
 
