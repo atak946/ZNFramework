@@ -194,7 +194,7 @@ $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
 echo MForm::options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
 ```
 
-# Select2 with trigger (sending selected value to your ajax url and loading new options any select2
+# Select2 with trigger (posting selected value to your ajax url and loading new options in your target element)
 
 ```sh
 $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
