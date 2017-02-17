@@ -14,7 +14,20 @@
 > e: murat.atak.21@yandex.com
 
 
->
+# Required plugins
+
+> [Bootstrap] : http://getbootstrap.com
+
+> [DataTables] : https://datatables.net
+
+> [Select2] : https://select2.github.io
+
+> [JQUERY] : https://jquery.com
+
+> [PHP]: https://php.net
+
+> [Metronic assets] : http://keenthemes.com/preview/metronic
+
 
 #USAGE:
 
