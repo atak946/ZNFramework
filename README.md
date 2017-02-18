@@ -18,6 +18,8 @@
 
 > [Bootstrap] : http://getbootstrap.com
 
+> [Sweet Alert] : http://t4t5.github.io/sweetalert
+
 > [DataTables] : https://datatables.net
 
 > [Select2] : https://select2.github.io
@@ -245,7 +247,7 @@ echo MForm::modal(
 
 ```sh
 <div class="modal-header">
-	<button type="button" class="close ServisKaydiKapat" aria-hidden="true"></button>
+	<button type="button" class="close" aria-hidden="true"></button>
 	<h4 class="modal-title">TİTLE</h4>
 </div>
 <div class="modal-body">
