@@ -206,7 +206,7 @@ $triggerOptions = ["ajaxurl" => "POST URL", "target" => "#TARGET_SELECT2_FOR_LOA
 echo MForm::trigger($triggerOptions)->options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
 ```
 
-# TRIGGER FORM FOR SELECT2
+# TriggerForm for select2
 
 ```sh
 
@@ -321,7 +321,7 @@ echo MForm::dom("") //Datatable buttons
 
 ```
 
-# TIME ELEMENT USAGE:
+## TIME element usage:
 
 ```sh
 
@@ -329,7 +329,7 @@ echo MForm::col(4)->class("time")->label("TIME:")->icon("fa fa-calendar")->time(
 
 ```
 
-# DATE ELEMENT USAGE:
+## DATE element usage:
 
 ```sh
 
@@ -337,7 +337,7 @@ echo MForm::col(4)->class("date")->label("DATE:")->icon("fa fa-calendar")->date(
 
 ```
 
-# DATETIME ELEMENT USAGE:
+## DATETIME element usage:
 
 ```sh
 
@@ -345,7 +345,7 @@ echo MForm::col(4)->class("datetime")->label("DATE TIME:")->icon("fa fa-calendar
 
 ```
 
-# DATERANGE ELEMENT USAGE:
+## DATERANGE element usage:
 
 ```sh
 
@@ -353,7 +353,7 @@ echo MForm::col(4)->class("daterangepicker")->label("DATE RANGE:")->icon("fa fa-
 
 ```
 
-# AND OTHER ELEMENTS ..
+## AND OTHER ELEMENTS ..
 
 > echo MForm::hidden("name","value");
 
