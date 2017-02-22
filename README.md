@@ -196,7 +196,7 @@ $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
 echo MForm::options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
 ```
 
-# Select2 with trigger (posting selected value to your ajax url and loading new options in your target element)
+# Select2 with trigger (posting selected value to your ajax url and append new options in your target element)
 
 ```sh
 $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
@@ -204,6 +204,30 @@ $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
 $triggerOptions = ["ajaxurl" => "POST URL", "target" => "#TARGET_SELECT2_FOR_LOAD_NEW_OPTIONS"];
 
 echo MForm::trigger($triggerOptions)->options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
+```
+
+# TRIGGER FORM FOR SELECT2
+
+```sh
+
+$triggerForm =
+			[
+				"data" =>
+				[
+					0 => ["target" => ".ELEMENT1", "data" => "Array | Json Key"],
+					1 => ["target" => ".ELEMENT2", "data" => "Array | Json Key"]
+				],
+				"ajaxurl" => "http://" //this link will be return $db->...()->row();
+			];
+
+SOURCE SELECT2:
+echo MForm::col(4)->required("required")->triggerForm($triggerForm)->class("select2")->id("ID")->label("LABEL")->select2("NAME", "");
+
+TARGET ELEMENTS:
+echo MForm::col(4)->required("required")->class("ELEMENT1")->label("TARGET ELEMENT 1")->text("ELEMENT1","");
+
+echo MForm::col(4)->required("required")->class("ELEMENT2")->label("TARGET ELEMENT 2")->text("ELEMENT2","");
+
 ```
 
 # close 
@@ -297,7 +321,39 @@ echo MForm::dom("") //Datatable buttons
 
 ```
 
-# AND ETC ELEMENTS ..
+# TIME ELEMENT USAGE:
+
+```sh
+
+echo MForm::col(4)->class("time")->label("TIME:")->icon("fa fa-calendar")->time("time", "", ["showMeridian" => "true" , ... OTHER ATTRIBUTES]);
+
+```
+
+# DATE ELEMENT USAGE:
+
+```sh
+
+echo MForm::col(4)->class("date")->label("DATE:")->icon("fa fa-calendar")->date("date", "", ["endDate" => "+0d" , ... OTHER ATTRIBUTES]);
+
+```
+
+# DATETIME ELEMENT USAGE:
+
+```sh
+
+echo MForm::col(4)->class("datetime")->label("DATE TIME:")->icon("fa fa-calendar")->datetime("datetime", "", ["endDate" => "+0d" , ... OTHER ATTRIBUTES]);
+
+```
+
+# DATERANGE ELEMENT USAGE:
+
+```sh
+
+echo MForm::col(4)->class("daterangepicker")->label("DATE RANGE:")->icon("fa fa-calendar")->daterangepicker("daterangepicker", "", ["endDate" => "+0d" , ... OTHER ATTRIBUTES]);
+
+```
+
+# AND OTHER ELEMENTS ..
 
 > echo MForm::hidden("name","value");
 

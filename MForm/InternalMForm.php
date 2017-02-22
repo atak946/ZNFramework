@@ -1,9 +1,4 @@
 <?php
- //--------------------------------------------------------------------------------------------------------
-    //
-    // Author     : Murat ATAK <murat.atak.21@yandex.com>
-    //
-    //--------------------------------------------------------------------------------------------------------
 
 class InternalMForm
 {
@@ -195,7 +190,7 @@ class InternalMForm
             }
             else
             {
-                $callbackhtml = "swal({title:'İşlem Başarılı', text:resp, type:'success', html:true}, function(){
+                $callbackhtml = "swal({title:'İşlem Başarılı', text:resp2, type:'success', html:true}, function(){
 
                     var refresh = $('#globalModal').attr('refresh');
 
@@ -261,15 +256,17 @@ class InternalMForm
                                     if(resp.hata)
                                     {
                                         var resp2 = resp.hata;
-
                                         ".$callbackhtmlerr."
                                     }
                                     else
+									{
+										var resp2 = resp.text;
                                         ".$callbackhtml."
+									}
                                 },
                                 error:function(xhr, resp)
                                 {
-                                    
+
                                 },
                                 complete:function(){
 
@@ -538,6 +535,46 @@ class InternalMForm
         $_col = $this->getattr("col", $_attributes);
         $_col = !empty($_col) ? $_col : 4;
 
+		$triggerForm = $this->getattr("triggerform", $_attributes);
+        $triggerForm_html = "";
+
+		if(!empty($triggerForm))
+		{
+			$jsonarr = json_encode($triggerForm["data"]);
+
+			$triggerForm_html = '
+				<script>
+					$(document).on("change", ".'.$class.'", function(){
+						App.blockUI();
+
+						var form = '.$jsonarr.';
+
+                        $.post("'.$triggerForm["ajaxurl"].'",{"value":$(this).val()},function(response){
+
+							$.each(form, function(key, value){
+								var target = value.target;
+								var data = value.data;
+								$(target).val(response[data]);
+							});
+
+                            App.unblockUI();
+
+                        },"json").fail(function(xhr, status, error){
+                            swal({
+                                type:"danger",
+                                text:error,
+                                html:true,
+                                title:"Beklenmedik bir hata oluştu"
+                            });
+
+							App.unblockUI();
+
+                        });
+					});
+				</script>
+			';
+		}
+
         $trigger = $this->getattr("trigger", $_attributes);
         $trigger_html = "";
 
@@ -549,7 +586,7 @@ class InternalMForm
                 <script>
                     $(document).on("change", ".'.$class.'", function(){
 
-                        App.blockUI();                        
+                        App.blockUI();
 
                         $.post("'.$trigger["ajaxurl"].'",{"value":$(this).val()},function(data){
 
@@ -567,6 +604,9 @@ class InternalMForm
                                 html:true,
                                 title:"Beklenmedik bir hata oluştu"
                             });
+
+							App.unblockUI();
+
                         });
 
                     });
@@ -578,13 +618,13 @@ class InternalMForm
          * Sadece ajax url barındırır, verilen link'e seçili value gönderimi yapar.
          * @var [String] => "http://..."
          */
-        $openmodal = $this->getattr("openmodal", $_attributes); 
+        $openmodal = $this->getattr("openmodal", $_attributes);
         $openmodal_html = "";
 
         if(!empty($openmodal))
         {
             $openmodaldata = "";
-            if(isset($openmodal["data"])) 
+            if(isset($openmodal["data"]))
             {
                 $openmodal["data"]["value"] = '';
                 $openmodaldata = Json::encode($openmodal["data"]);
@@ -606,7 +646,7 @@ class InternalMForm
                         App.blockUI();
 
                         $.post("'.$openmodal["url"].'",data,function(data){
-                            
+
                             if(data != "false")
                             {
                                 var modal = $("#globalModal", document);
@@ -617,7 +657,7 @@ class InternalMForm
 
                                 $(".select2").select2({width:"100%"});
                             }
-                            
+
                             App.unblockUI();
 
                         }).fail(function(xhr, status, error){
@@ -685,6 +725,7 @@ class InternalMForm
         }
 
         $return.=$trigger_html;
+        $return.=$triggerForm_html;
         $return.=$openmodal_html;
 
         return $return.EOL;
@@ -799,22 +840,74 @@ class InternalMForm
 
     public function date(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-        return $this->_input($name, $value, $_attributes, __FUNCTION__);
+		$class = $this->getattr("class", $_attributes);
+		$_attributes["class"] = $class;
+
+		$settings = json_encode($_attributes);
+
+		$html = $this->_input($name, $value, $_attributes, $class == "date" ? "text" : __FUNCTION__);
+
+		$html .= "
+			<script>
+				$('.date').datepicker($settings);
+			</script>
+		";
+        return $html;
     }
 
+	// time class'ı verilmesi gerekiyor
     public function time(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-        return $this->_input($name, $value, $_attributes, __FUNCTION__);
+		$class = $this->getattr("class", $_attributes);
+		$_attributes["class"] = $class;
+
+		$settings = json_encode($_attributes);
+
+		$html = $this->_input($name, $value, $_attributes, $class == "time" ? "text" : __FUNCTION__);
+
+		$html .= "
+			<script>
+				$('.time').timepicker($settings);
+			</script>
+		";
+        return $html;
     }
 
     public function datetime(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-        return $this->_input($name, $value, $_attributes, __FUNCTION__);
+		$class = $this->getattr("class", $_attributes);
+		$_attributes["class"] = $class;
+
+		$settings = json_encode($_attributes);
+
+		$html = $this->_input($name, $value, $_attributes, $class == "datetime" ? "text" : __FUNCTION__);
+
+		$html .= "
+			<script>
+				$('.datetime').datetimepicker($settings);
+			</script>
+		";
+        return $html;
     }
 
-    public function datetimeLocal(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
+    public function daterangepicker(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-        return $this->_input($name, $value, $_attributes, __FUNCTION__);
+		$class = $this->getattr("class", $_attributes);
+		$_attributes["class"] = $class;
+
+		$function = $this->getattr("function", $_attributes);
+		unset($_attributes["function"]);
+
+		$settings = json_encode($_attributes);
+
+		$html = $this->_input($name, $value, $_attributes, $class == "daterangepicker" ? "text" : __FUNCTION__);
+
+		$html .= "
+			<script>
+				$('.daterangepicker').daterangepicker($settings);
+			</script>
+		";
+        return $html;
     }
 
     public function week(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
