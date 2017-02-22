@@ -37,7 +37,7 @@
 echo MForm::attribute("value")->element("name","value");
 ```
 
-# Two way usage
+## Two way usage
 
 ### First: 
 
@@ -78,7 +78,7 @@ echo MForm::text("name","value",[
 
 ```
 
-# col and rows (auto closing row div step to col 12)
+## col and rows (auto closing row div step to col 12)
 
 ```sh
 echo MForm::col(4)->text("text1","");
@@ -93,19 +93,19 @@ echo MForm::col(6)->text("text1","");
 echo MForm::col(6)->text("text2","");
 ```
 
-# With icon input:
+## With icon input:
 
 ```sh
 echo MForm::id("iconInput")->[..all html attributes..]->icon("fa fa-user")->iconalign("left")->text("name","default value");
 ```
 
-# With icon button:
+## With icon button:
 
 ```sh
 echo MForm::id("iconButton")->[..all html attributes..]->icon("fa fa-user")->iconalign("left")->button("name","default value");
 ```
 
-# Create standart form
+## Create standart form
 
 ```sh
 echo MForm::open("form");
@@ -115,19 +115,19 @@ echo MForm::open("form");
 echo MForm::close();
 ```
 
-# Form validation
+## Form validation
 
 ```sh
 echo MForm::validate(true)->open("form");
 ```
 
-# Material form and validation
+## Material form and validation
 
 ```sh
 echo MForm::material(true)->validate(true)->open("form");
 ```
 
-# Submit form with ajax and return callback on your custom area (sweet alert, modal, or any div)
+## Submit form with ajax and return callback on your custom area (sweet alert, modal, or any div)
 
 ```sh
 echo  MForm::validate(true)->ajax([
@@ -147,7 +147,7 @@ echo  MForm::validate(true)->ajax([
 ```
                            
                            
-#### -> callback params:
+### -> callback params:
 
 > 1 => return message on alert alert-success, 
 
@@ -158,11 +158,11 @@ echo  MForm::validate(true)->ajax([
 > 4 => #globalModal
 
 
-#### -> callbackurl:
+### -> callbackurl: (for callback params : 4)
 
 > for load custom modal content
 
-# Validation rules
+## Validation rules
 
  * You'll write all validation rules 
 
@@ -172,7 +172,7 @@ echo MForm::required("")->min("5")->max("12")->text("number","");
 
 ```
 
-# Open Portlets
+## Open Portlets
 
 ```sh
 echo MForm::template("light")->title("PORTLET TİTLE")->open("portlet");
@@ -182,13 +182,13 @@ echo MForm::template("light")->title("PORTLET TİTLE")->open("portlet");
 echo MForm::close("portlet");
 ```
 
-# clearFix (bootstrap class)
+## clearFix (bootstrap class)
 
 ```sh
  echo MForm::clearFix();
 ```
 
-# Select2 with selected value and options
+## Select2 with selected value and options
 
 ```sh
 $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
@@ -196,7 +196,7 @@ $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
 echo MForm::options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
 ```
 
-# Select2 with trigger (posting selected value to your ajax url and append new options in your target element)
+## Select2 with trigger (posting selected value to your ajax url and append new options in your target element)
 
 ```sh
 $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
@@ -206,7 +206,7 @@ $triggerOptions = ["ajaxurl" => "POST URL", "target" => "#TARGET_SELECT2_FOR_LOA
 echo MForm::trigger($triggerOptions)->options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
 ```
 
-# TriggerForm for select2
+## TriggerForm for select2
 
 ```sh
 
@@ -230,7 +230,7 @@ echo MForm::col(4)->required("required")->class("ELEMENT2")->label("TARGET ELEME
 
 ```
 
-# close 
+## close 
 
 ```sh
 echo MForm::close("element");
@@ -250,7 +250,7 @@ output:
 ```
 > element => html, div, span, p, h1, h3, ...
 
-# Open custom modal on button click event
+## Open custom modal on button click event
 
 ```sh
 echo MForm::modal(
@@ -267,7 +267,7 @@ echo MForm::modal(
 ->button("BUTTON_NAME", "BUTTON_TEXT");
 ```
 
-#### EXAMPLE MODAL CONTENT
+## EXAMPLE MODAL CONTENT
 
 ```sh
 <div class="modal-header">
@@ -289,7 +289,7 @@ echo MForm::modal(
 
 ```
 
-### What is the globalModal ?
+## What is the globalModal ?
 
 > you need to include globalModal in your master page.
 > MForm working with this modal skeleton
@@ -304,7 +304,7 @@ echo MForm::modal(
 </div>
 ```
 
-# How to create DataTable server side
+## How to create DataTable server side
 
 > @ https://datatables.net/examples/data_sources/server_side.html
 
