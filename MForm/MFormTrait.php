@@ -456,7 +456,8 @@ trait MFormTrait
                         $.ajax({
                             url: "'.$url.'",
                             type:"post",
-                            "dataType":"",
+                            dataType:"",
+                            data: {"value":nesne.val()},
                             success:function(response){
                                 console.log(response);
                                 if(response == "true")
