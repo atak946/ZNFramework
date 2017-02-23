@@ -164,7 +164,7 @@ echo  MForm::validate(true)->ajax([
 
 ## Validation rules
 
- * You'll write all validation rules 
+ * **You'll write all validation rules**
 
 ```sh
 
@@ -190,9 +190,10 @@ echo MForm::close("portlet");
 
 ## Checktext: check your value is already registered in your db, show error for user.
 
-> Your php file will be return "true" or "false"
+> **Info**
 
-> " Class name is required "
+> - Your php file will be return "true" or "false"
+> - " Class name is required "
 
 ```sh
  	echo MForm::checktext("http://myphpfile.php")->class("INPUT_CLASS")->label("USERNAME:")->text("USERNAME","");
@@ -227,6 +228,8 @@ echo MForm::trigger($triggerOptions)->options($opt)->id("SELECT2_ID")->label("SE
 ```
 
 ## TriggerForm for select2
+
+> **What is this ?** => [Watch swf](http://www.fastswf.com/aa-jGME)
 
 ```sh
 
