@@ -358,7 +358,7 @@ trait MFormTrait
         $_col = $this->getattr("col", $attributes);
         $_col = !empty($_col) ? $_col : 4;
 
-        $this->_checkText($class, $_attributes);
+        $this->_checkText($class, $attributes);
 
         $return = "";
 
