@@ -1,11 +1,6 @@
-# MForm Form Builder
+## <i class='icon-direction'></i> **MForm Form Builder**
 
-
->
-
-#Contact US - Info:
-
-
+## <i class='icon-tag'></i> **Contact US - Info:**
 
 > Author: Murat ATAK
 
@@ -14,7 +9,7 @@
 > e: murat.atak.21@yandex.com
 
 
-# Required
+## <i class='icon-globe'></i> **Required**
 
 > [Bootstrap] : http://getbootstrap.com
 
@@ -31,15 +26,14 @@
 > [Metronic assets] : http://keenthemes.com/preview/metronic
 
 
-#USAGE:
-
-```sh
+## <i class='icon-info'></i>**Usage:**
+```
 echo MForm::attribute("value")->element("name","value");
 ```
 
-## Two way usage
+### <i class='icon-asterisk'></i> **Two way usage**
 
-### First: 
+### <i class='icon-asterisk'></i> **First:** 
 
 ```sh
 
@@ -51,9 +45,8 @@ echo MForm::id("element")->icon("fa fa-user")->[... ETC ...]->text("name","");
 
 ```
 
-### And OTHER
-
-```sh
+### <i class='icon-asterisk'></i> **and other:**
+```
 
 echo MForm::element("name","value",[
 
@@ -78,7 +71,7 @@ echo MForm::text("name","value",[
 
 ```
 
-## col and rows (auto closing row div step to col 12)
+## <i class='icon-asterisk'></i> **col and rows (auto closing row div step to col 12)**
 
 ```sh
 echo MForm::col(4)->text("text1","");
@@ -86,26 +79,26 @@ echo MForm::col(4)->text("text2","");
 echo MForm::col(4)->text("text3","");
 ```
 
-### OR 
+### <i class='icon-asterisk'></i> **OR **
 
 ```sh
 echo MForm::col(6)->text("text1","");
 echo MForm::col(6)->text("text2","");
 ```
 
-## With icon input:
+## <i class='icon-asterisk'></i> **With icon input:**
 
 ```sh
 echo MForm::id("iconInput")->[..all html attributes..]->icon("fa fa-user")->iconalign("left")->text("name","default value");
 ```
 
-## With icon button:
+## <i class='icon-asterisk'></i> **With icon button:**
 
 ```sh
 echo MForm::id("iconButton")->[..all html attributes..]->icon("fa fa-user")->iconalign("left")->button("name","default value");
 ```
 
-## Create standart form
+## <i class='icon-asterisk'></i> **Create standart form**
 
 ```sh
 echo MForm::open("form");
@@ -115,19 +108,19 @@ echo MForm::open("form");
 echo MForm::close();
 ```
 
-## Form validation
+## <i class='icon-asterisk'></i> **Form validation**
 
 ```sh
 echo MForm::validate(true)->open("form");
 ```
 
-## Material form and validation
+## <i class='icon-asterisk'></i> **Material form and validation**
 
 ```sh
 echo MForm::material(true)->validate(true)->open("form");
 ```
 
-## Submit form with ajax and return callback on your custom area (sweet alert, modal, or any div)
+## <i class='icon-asterisk'></i> **Submit form with ajax and return callback on your custom area (sweet alert, modal, or any div)**
 
 ```sh
 echo  MForm::validate(true)->ajax([
@@ -147,22 +140,23 @@ echo  MForm::validate(true)->ajax([
 ```
                            
                            
-### -> callback params:
+### <i class='icon-asterisk'></i> **callback params:**
 
-> 1 => return message on alert alert-success, 
+Param  | Description
+-------|-----------
+1 	   | Return message on class="alert alert-success"
+2      | clear body and set message on body
+3      | show sweet alert
+**4**      | **Show in #globalModal**
+**4 ***    | **this have callbackurl param!**
 
-> 2 => clear body and set message on body,
+>  for the "#globalModal" go to this line > **What is the globalModal ?**
 
-> 3 => sweet alert, 
+> **callbackurl: (for callback params : 4)**
 
-> 4 => #globalModal
+> load custom modal content in the your php file
 
-
-### -> callbackurl: (for callback params : 4)
-
-> for load custom modal content
-
-## Validation rules
+## <i class='icon-asterisk'></i> **Validation rules**
 
  * **You'll write all validation rules**
 
@@ -172,7 +166,7 @@ echo MForm::required("")->min("5")->max("12")->text("number","");
 
 ```
 
-## Open Portlets
+## <i class='icon-asterisk'></i> **Open Portlets**
 
 ```sh
 echo MForm::template("light")->title("PORTLET TİTLE")->open("portlet");
@@ -182,13 +176,13 @@ echo MForm::template("light")->title("PORTLET TİTLE")->open("portlet");
 echo MForm::close("portlet");
 ```
 
-## clearFix (bootstrap class)
+## <i class='icon-asterisk'></i> **clearFix (bootstrap class)**
 
 ```sh
  echo MForm::clearFix();
 ```
 
-## Checktext: check your value is already registered in your db, show error for user.
+## <i class='icon-asterisk'></i> **Checktext: check your value is already registered in your db, show error for user.**
 
 > **Info**
 
@@ -209,7 +203,7 @@ echo MForm::close("portlet");
 
 ```
 
-## Select2 with selected value and options
+## <i class='icon-asterisk'></i> **Select2 with selected value and options**
 
 ```sh
 $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
@@ -217,7 +211,7 @@ $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
 echo MForm::options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
 ```
 
-## Select2 with trigger (posting selected value to your ajax url and append new options in your target element)
+## <i class='icon-asterisk'></i> **Select2 with trigger (posting selected value to your ajax url and append new options in your target element)**
 
 ```sh
 $opt = ["VAL1" => "TEXT1","VAL2" => "TEXT2", "SELECTED" => "TEXT2"];
@@ -227,9 +221,9 @@ $triggerOptions = ["ajaxurl" => "POST URL", "target" => "#TARGET_SELECT2_FOR_LOA
 echo MForm::trigger($triggerOptions)->options($opt)->id("SELECT2_ID")->label("SELECT2 LABEL")->select2("SELECT2_NAME","");
 ```
 
-## TriggerForm for select2
+## <i class='icon-asterisk'></i> **TriggerForm for select2**
 
-> **What is this ?** => [Watch swf](http://www.fastswf.com/aa-jGME)
+> **What is this ?** > [Watch swf](http://www.fastswf.com/aa-jGME)
 
 ```sh
 
@@ -253,7 +247,7 @@ echo MForm::col(4)->required("required")->class("ELEMENT2")->label("TARGET ELEME
 
 ```
 
-## close 
+## <i class='icon-asterisk'></i> **close**
 
 ```sh
 echo MForm::close("element");
@@ -273,7 +267,7 @@ output:
 ```
 > element => html, div, span, p, h1, h3, ...
 
-## Open custom modal on button click event
+## <i class='icon-asterisk'></i> **Open custom modal on button click event**
 
 ```sh
 echo MForm::modal(
@@ -290,7 +284,7 @@ echo MForm::modal(
 ->button("BUTTON_NAME", "BUTTON_TEXT");
 ```
 
-## EXAMPLE MODAL CONTENT
+## <i class='icon-asterisk'></i> **EXAMPLE MODAL CONTENT**
 
 ```sh
 <div class="modal-header">
@@ -312,7 +306,7 @@ echo MForm::modal(
 
 ```
 
-## What is the globalModal ?
+## <i class='icon-asterisk'></i> **What is the globalModal ?**
 
 > you need to include globalModal in your master page.
 > MForm working with this modal skeleton
@@ -327,7 +321,7 @@ echo MForm::modal(
 </div>
 ```
 
-## How to create DataTable server side
+## <i class='icon-asterisk'></i> **How to create DataTable server side**
 
 > @ https://datatables.net/examples/data_sources/server_side.html
 
@@ -344,7 +338,7 @@ echo MForm::dom("") //Datatable buttons
 
 ```
 
-## TIME element usage:
+## <i class='icon-asterisk'></i> **TIME element usage:**
 
 ```sh
 
@@ -352,7 +346,7 @@ echo MForm::col(4)->class("time")->label("TIME:")->icon("fa fa-calendar")->time(
 
 ```
 
-## DATE element usage:
+## <i class='icon-asterisk'></i> **DATE element usage:**
 
 ```sh
 
@@ -360,7 +354,7 @@ echo MForm::col(4)->class("date")->label("DATE:")->icon("fa fa-calendar")->date(
 
 ```
 
-## DATETIME element usage:
+## <i class='icon-asterisk'></i> **DATETIME element usage:**
 
 ```sh
 
@@ -368,7 +362,7 @@ echo MForm::col(4)->class("datetime")->label("DATE TIME:")->icon("fa fa-calendar
 
 ```
 
-## DATERANGE element usage:
+##<i class='icon-asterisk'></i>  **DATERANGE element usage:**
 
 ```sh
 
@@ -376,7 +370,7 @@ echo MForm::col(4)->class("daterangepicker")->label("DATE RANGE:")->icon("fa fa-
 
 ```
 
-## AND OTHER ELEMENTS ..
+## <i class='icon-asterisk'></i> **AND OTHER ELEMENTS ..**
 
 > echo MForm::hidden("name","value");
 
