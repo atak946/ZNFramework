@@ -191,6 +191,7 @@ echo MForm::close("portlet");
 ## Checktext: check your value is already registered in your db, show error for user.
 
 > Your php file will be return "true" or "false"
+
 > " Class name is required "
 
 ```sh
