@@ -459,7 +459,6 @@ trait MFormTrait
                             dataType:"",
                             data: {"value":nesne.val()},
                             success:function(response){
-                                console.log(response);
                                 if(response == "true")
                                 {
                                     nesne.closest(".form-group").addClass("has-error");
