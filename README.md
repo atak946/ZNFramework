@@ -188,6 +188,25 @@ echo MForm::close("portlet");
  echo MForm::clearFix();
 ```
 
+## Checktext: check your value is already registered in your db, show error for user.
+
+> Your php file will be return "true" or "false"
+> " Class name is required "
+
+```sh
+ 	echo MForm::checktext("http://myphpfile.php")->class("INPUT_CLASS")->label("USERNAME:")->text("USERNAME","");
+
+	php code:
+
+	$DB:...()->..;
+
+	if($recordisvalid)
+		echo "true"; //record is valid, show error
+	else
+		echo "false"; //record is not valid, hide error
+
+```
+
 ## Select2 with selected value and options
 
 ```sh

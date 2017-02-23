@@ -308,13 +308,6 @@ class InternalMForm
         return "<$element ".$this->attributes($_attributes).">".$val;
     }
 
-    /*public function col(String $_size = "12") : String
-    {
-        $return = "<div class='col-md-".$_size."'>";
-
-        return $return;
-    }*/
-
     public function portletTitle(String $title = "", Array $_attributes = [])
     {
         $return =
@@ -330,7 +323,6 @@ class InternalMForm
         ';
 
         return $return;
-
     }
 
     public function table(String $ID = NULL, Array $cols = [], Array $_attributes = [])

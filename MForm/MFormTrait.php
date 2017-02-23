@@ -297,8 +297,12 @@ trait MFormTrait
         $label = $this->getattr("label", $attributes);
         $class = $this->getattr("class", $attributes);
 
+        if(empty($class)) $class = $this->uniqID();
+
         $_col = $this->getattr("col", $attributes);
         $_col = !empty($_col) ? $_col : 4;
+
+        $this->_checkText($class, $attributes);
 
         $return = "";
 
@@ -349,8 +353,12 @@ trait MFormTrait
         $label = $this->getattr("label", $attributes);
         $class = $this->getattr("class", $attributes);
 
+        if(empty($class)) $class = $this->uniqID();
+
         $_col = $this->getattr("col", $attributes);
         $_col = !empty($_col) ? $_col : 4;
+
+        $this->_checkText($class, $_attributes);
 
         $return = "";
 
@@ -429,6 +437,47 @@ trait MFormTrait
             return "";
 
         return $return;
+    }
+
+    protected function _checkText(String $class = "", Array $_attributes = [])
+    {
+        $checktext = $this->getattr("checktext", $_attributes);
+
+        if(!empty($checktext))
+        {
+            $url = $checktext;
+
+            echo '
+                <script>
+                    $(".'.$class.'", document).attr("checktext","");
+
+                    $(document).on("input keypress paste", ".'.$class.'", function(){
+                        var nesne = $(this);
+                        $.ajax({
+                            url: "'.$url.'",
+                            type:"post",
+                            "dataType":"",
+                            success:function(response){
+                                console.log(response);
+                                if(response == "true")
+                                {
+                                    nesne.closest(".form-group").addClass("has-error");
+                                    nesne.closest(".form-group").removeClass("has-success");
+                                }
+                                else{
+                                    nesne.closest(".form-group").removeClass("has-error");
+                                    nesne.closest(".form-group").addClass("has-success");
+                                }
+                            }
+                        })
+                    });
+                </script>
+            ';
+        }
+        else
+        {
+            echo "";
+        }
     }
 
     //--------------------------------------------------------------------------------------------------------
