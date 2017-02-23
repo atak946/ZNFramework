@@ -199,7 +199,7 @@ echo MForm::close("portlet");
 
 	php code:
 
-	$DB:...()->..;
+	DB:...()->..;
 
 	if($recordisvalid)
 		echo "true"; //record is valid, show error
