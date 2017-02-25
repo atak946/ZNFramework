@@ -11,19 +11,22 @@
 
 ## <i class='icon-globe'></i> **Required**
 
-> [Bootstrap] : http://getbootstrap.com
+> [Bootstrap](http://getbootstrap.com) : **getbootstrap.com**
 
-> [Sweet Alert] : http://t4t5.github.io/sweetalert
+> [Sweet Alert](http://t4t5.github.io/sweetalert) : **t4t5.github.io/sweetalert**
 
-> [DataTables] : https://datatables.net
+> [DataTables](https://datatables.net) : **datatables.net**
 
-> [Select2] : https://select2.github.io
+> [Select2](https://select2.github.io) : **select2.github.io**
 
-> [JQUERY] : https://jquery.com
+> [JQUERY](https://jquery.com) : **jquery.com**
 
-> [PHP]: https://php.net
+> [Inputmask](https://github.com/RobinHerbots/Inputmask): **github.com/RobinHerbots/Inputmask**
 
-> [Metronic assets] : http://keenthemes.com/preview/metronic
+> [PHP](https://php.net): **php.net**
+
+**OR USE METRONIC FOR FULL ASSETS WITH MFORM LIBRARY**
+> [Metronic assets](http://keenthemes.com/preview/metronic) : **keenthemes.com/preview/metronic**
 
 
 ## <i class='icon-info'></i>**Usage:**
@@ -33,7 +36,7 @@ echo MForm::attribute("value")->element("name","value");
 
 ### <i class='icon-asterisk'></i> **Two way usage**
 
-### <i class='icon-asterisk'></i> **First:** 
+### <i class='icon-asterisk'></i> **First:**
 
 ```sh
 
@@ -125,21 +128,21 @@ echo MForm::material(true)->validate(true)->open("form");
 ```sh
 echo  MForm::validate(true)->ajax([
                               "url"=>"http://..",
-                              
+
                               "datatype"=>"JSON",
-                              
+
                               "method"=>"POST",
-                              
+
                               "callback"=>"4",
-                              
-                              "callbackurl"=> "http://.." 
-                              
+
+                              "callbackurl"=> "http://.."
+
                               ])
-                              
+
     ->material(false)->id("form1")->onsubmit("return false;")->open("form1");
 ```
-                           
-                           
+
+
 ### <i class='icon-asterisk'></i> **callback params:**
 
 Param  | Description
@@ -415,6 +418,3 @@ echo MForm::col(4)->class("daterangepicker")->label("DATE RANGE:")->icon("fa fa-
 > echo MForm::reset("name","value");
 
 > echo MForm::link("name","value");
-
-
-
