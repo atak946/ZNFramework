@@ -929,7 +929,11 @@ class InternalMForm
 
     public function tel(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-        return $this->_input($name, $value, $_attributes, __FUNCTION__);
+		$html = $this->_input($name, $value, $_attributes, __FUNCTION__);
+
+		$html.='<script> $("input[name=\''.$name.'\']").inputmask("0 (999) 999 99-99"); </script>';
+
+        return $html;
     }
 
     public function number(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
