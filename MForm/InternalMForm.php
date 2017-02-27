@@ -822,16 +822,14 @@ class InternalMForm
 
     public function radio(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
+		$settings = json_encode($_attributes);
+
         $html = $this->_input($name, $value, $_attributes, __FUNCTION__);
 
 		$html .=
 			"<script>
 				$(document).ready(function(){
-				  $('input').iCheck({
-				    checkboxClass: 'icheckbox_square',
-				    radioClass: 'iradio_square',
-				    increaseArea: '20%' // optional
-				  });
+				  $('input').iCheck($settings);
 				});
 			</script>";
 
@@ -840,12 +838,13 @@ class InternalMForm
 
     public function checkbox(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
+		$settings = json_encode($_attributes);
 		$html = $this->_input($name, $value, $_attributes, __FUNCTION__);
 
 		$html .=
 			"<script>
 				$(document).ready(function(){
-				  $('input').iCheck();
+				  $('input').iCheck($settings);
 				});
 			</script>";
 
