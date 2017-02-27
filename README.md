@@ -19,6 +19,8 @@
 
 > [Select2](https://select2.github.io) : **select2.github.io**
 
+> [iCheck](http://icheck.fronteed.com/#demo) : **icheck.fronteed.com**
+
 > [JQUERY](https://jquery.com) : **jquery.com**
 
 > [Inputmask](https://github.com/RobinHerbots/Inputmask): **github.com/RobinHerbots/Inputmask**

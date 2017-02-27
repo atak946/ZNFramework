@@ -822,12 +822,34 @@ class InternalMForm
 
     public function radio(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-        return $this->_input($name, $value, $_attributes, __FUNCTION__);
+        $html = $this->_input($name, $value, $_attributes, __FUNCTION__);
+
+		$html .=
+			"<script>
+				$(document).ready(function(){
+				  $('input').iCheck({
+				    checkboxClass: 'icheckbox_square',
+				    radioClass: 'iradio_square',
+				    increaseArea: '20%' // optional
+				  });
+				});
+			</script>";
+
+		return $html;
     }
 
     public function checkbox(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-        return $this->_input($name, $value, $_attributes, __FUNCTION__);
+		$html = $this->_input($name, $value, $_attributes, __FUNCTION__);
+
+		$html .=
+			"<script>
+				$(document).ready(function(){
+				  $('input').iCheck();
+				});
+			</script>";
+
+		return $html;
     }
 
     public function date(String $name = NULL, String $value = NULL, Array $_attributes = []) : String

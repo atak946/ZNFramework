@@ -319,15 +319,17 @@ trait MFormTrait
 
         $return .= '<div class="form-group '.$this->formType.'">';
 
+        $formcontrolclass = $type == "radio" || $type == "checkbox" ? "" : "form-control";
+
         if(!empty($this->formType))
         {
-            $return.='<input class="form-control '.$class.'" value="'.$value.'" type="'.$type.'"'.$this->attributes($attributes).'>';
+            $return.='<input class="'.$formcontrolclass.' '.$class.'" value="'.$value.'" type="'.$type.'"'.$this->attributes($attributes).'>';
             $return.='<label for="form_control_1">'.$label.'</label>';
         }
         else
         {
             $return.='<label for="form_control_1">'.$label.'</label>';
-            $return.='<input class="form-control '.$class.'" value="'.$value.'" type="'.$type.'"'.$this->attributes($attributes).'>';
+            $return.='<input class="'.$formcontrolclass.' '.$class.'" value="'.$value.'" type="'.$type.'"'.$this->attributes($attributes).'>';
         }
 
         $return .= '</div>';
