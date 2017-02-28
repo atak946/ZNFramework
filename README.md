@@ -388,7 +388,7 @@ echo MForm::col(12)->label("CHECK ME!")->checkbox("NAME", "VALUE", ["checkboxCla
 
 ```
 $checks = Array(
-	["name" => "CHCK[]", "value" => "21", "label" => "DİYARBAKIR"],
+	["name" => "CHCK[]", "value" => "21", "label" => "DİYARBAKIR", "checked" => "true"], // checked will be string "true"
 	["name" => "CHCK[]", "value" => "34", "label" => "İSTANBUL"]
 );
 

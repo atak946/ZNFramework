@@ -337,6 +337,17 @@ trait MFormTrait
                     <div class="icheck-inline">';
 
             foreach ($options as $key) {
+
+                if(isset($attributes["checked"])) unset($attributes["checked"]);
+
+                if(isset($key["checked"]))
+                {
+                    if($key["checked"] === "true")
+                    {
+                        $attributes["checked"] = "checked";
+                    }
+                }
+
                 $return.='
                     <label>
                         <input type="'.$type.'" name="'.$key["name"].'" value="'.$key["value"].'" '.$this->attributes($attributes).'>
