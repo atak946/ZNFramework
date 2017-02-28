@@ -209,14 +209,21 @@ trait MFormTrait
 
         if(!isset($this->settings["attr"]["icon"]) && !isset($attributes["icon"]))
         {
-            return $this->defaultText($name, $value, $attributes, $type);
+            if(in_array($type, ["checkbox", "radio"]))
+            {
+                return $this->check_radio($name, $value, $attributes, $type);
+            }
+            else {
+                return $this->defaultText($name, $value, $attributes, $type);
+            }
         }
         else
         {
             $filter = ["text", "password", "date", "time", "datetime", "week", "month", "search", "email", "tel", "number", "number", "url"];
 
-            if(in_array($type, $filter))
+            if(in_array($type, $filter)){
                 return $this->textIcon($name, $value, $attributes, $type);
+            }
             else if(in_array($type, ["submit", "button"]))
             {
                 return $this->_button($name, $value, $attributes, $type);
@@ -289,6 +296,77 @@ trait MFormTrait
         $in = $iconAlign == "left" || empty($iconAlign) ? "<i class='".$icon."'></i> ".$value : $value." <i class='".$icon."'></i>";
 
         return "<button type='$type' class='btn ".$class." ".$_uniqclass."' ".$this->attributes($attributes).">".$in."</button>".$modal_html;
+    }
+
+    protected function check_radio(String $name = "", String $value = "", Array $attributes = [], String $type = '') : String
+    {
+        $value = $this->getattr("value", $attributes);
+        $label = $this->getattr("label", $attributes);
+        $class = $this->getattr("class", $attributes);
+
+        if(empty($class)) $class = $this->uniqID();
+
+        $_col = $this->getattr("col", $attributes);
+        $_col = !empty($_col) ? $_col : 4;
+
+        $this->_checkText($class, $attributes);
+
+        $return = "";
+
+        if($this->colsize == "0")
+        {
+            $return.="<div class='row'><div class='col-md-".$_col."'>";
+            $this->colsize = (String)(intval($this->colsize) + intval($_col));
+        }
+        else
+        {
+            $return.="<div class='col-md-".$_col."'>";
+            $this->colsize = (String)(intval($this->colsize) + intval($_col));
+        }
+
+        $return .= '<div class="form-group '.$this->formType.'">';
+
+        $formcontrolclass = "";
+
+        $options = $this->getattr("options", $attributes);
+
+        if(!empty($options))
+        {
+            $return.='
+            <label>'.$label.'</label>
+            <div class="col-md-12">
+                <div class="row input-group">
+                    <div class="icheck-inline">';
+
+            foreach ($options as $key) {
+                $return.='
+                    <label>
+                        <input type="'.$type.'" name="'.$key["name"].'" value="'.$key["value"].'" '.$this->attributes($attributes).'>
+                        '.$key["label"].'
+                    </label>
+                ';
+            }
+
+            $return.='</div></div></div>';
+        }
+        else {
+            $return.='<label for="form_control_1"><input class="'.$formcontrolclass.' '.$class.'" value="'.$value.'" type="'.$type.'"'.$this->attributes($attributes).'>';
+            $return.=''.$label.'</label>';
+        }
+
+        $return .= '</div>';
+
+        if(intval($this->colsize) >= 12)
+        {
+            $return.="</div></div>";
+            $this->colsize = "0";
+        }
+        else
+        {
+            $return.="</div>";
+        }
+
+        return $return.EOL;
     }
 
     protected function defaultText(String $name = "", String $value = "", Array $attributes = [], String $type = '') : String

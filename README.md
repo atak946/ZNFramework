@@ -375,6 +375,29 @@ echo MForm::col(4)->class("daterangepicker")->label("DATE RANGE:")->icon("fa fa-
 
 ```
 
+## **icheck Usage:**
+
+```
+
+echo MForm::col(12)->label("CHECK ME!")->checkbox("NAME", "VALUE", ["checkboxClass" =>"icheckbox_square-green"]);
+
+
+```
+
+## **icheck group Usage:**
+
+```
+$checks = Array(
+	["name" => "CHCK[]", "value" => "21", "label" => "DİYARBAKIR"],
+	["name" => "CHCK[]", "value" => "34", "label" => "İSTANBUL"]
+);
+
+echo MForm::col(12)->label("CHECK AN OPTION")->options($checks)->radio("NAME", "VALUE", ["radioClass"=>"iradio_square-green"]);
+
+
+```
+
+
 ## <i class='icon-asterisk'></i> **AND OTHER ELEMENTS ..**
 
 > echo MForm::hidden("name","value");

@@ -822,9 +822,14 @@ class InternalMForm
 
     public function radio(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-		$settings = json_encode($_attributes);
+		$settings = $_attributes;
 
         $html = $this->_input($name, $value, $_attributes, __FUNCTION__);
+
+		if(!isset($settings["radioClass"]))
+			$settings["radioClass"] = "iradio_square-green";
+
+		$settings = json_encode($settings);
 
 		$html .=
 			"<script>
@@ -838,8 +843,13 @@ class InternalMForm
 
     public function checkbox(String $name = NULL, String $value = NULL, Array $_attributes = []) : String
     {
-		$settings = json_encode($_attributes);
+		$settings = $_attributes;
 		$html = $this->_input($name, $value, $_attributes, __FUNCTION__);
+
+		if(!isset($settings["checkboxClass"]))
+			$settings["checkboxClass"] = "icheckbox_square-green";
+
+		$settings = json_encode($settings);
 
 		$html .=
 			"<script>
@@ -856,13 +866,23 @@ class InternalMForm
 		$class = $this->getattr("class", $_attributes);
 		$_attributes["class"] = $class;
 
-		$settings = json_encode($_attributes);
+		$settings = $_attributes;
+        unset($settings["class"]);
 
-		$html = $this->_input($name, $value, $_attributes, $class == "date" ? "text" : __FUNCTION__);
+        $settings["autoclose"] = "true";
+        $settings["todayHighlight"] = "true";
+        $settings["todayBtn"] = "true";
+        $settings["weekStart"] = 1;
+        $settings["language"] = "tr";
+
+        $settings = json_encode($settings);
+
+		$html = $this->_input($name, $value, $_attributes, "text");
 
 		$html .= "
 			<script>
 				$('.date').datepicker($settings);
+                jQuery.validator.methods['date'] = function (value, element) { return true; }
 			</script>
 		";
         return $html;
@@ -876,11 +896,12 @@ class InternalMForm
 
 		$settings = json_encode($_attributes);
 
-		$html = $this->_input($name, $value, $_attributes, $class == "time" ? "text" : __FUNCTION__);
+		$html = $this->_input($name, $value, $_attributes, "text");
 
 		$html .= "
 			<script>
 				$('.time').timepicker($settings);
+                jQuery.validator.methods['date'] = function (value, element) { return true; }
 			</script>
 		";
         return $html;
@@ -893,11 +914,12 @@ class InternalMForm
 
 		$settings = json_encode($_attributes);
 
-		$html = $this->_input($name, $value, $_attributes, $class == "datetime" ? "text" : __FUNCTION__);
+		$html = $this->_input($name, $value, $_attributes, "text");
 
 		$html .= "
 			<script>
 				$('.datetime').datetimepicker($settings);
+                jQuery.validator.methods['date'] = function (value, element) { return true; }
 			</script>
 		";
         return $html;
@@ -913,11 +935,12 @@ class InternalMForm
 
 		$settings = json_encode($_attributes);
 
-		$html = $this->_input($name, $value, $_attributes, $class == "daterangepicker" ? "text" : __FUNCTION__);
+		$html = $this->_input($name, $value, $_attributes, "text");
 
 		$html .= "
 			<script>
 				$('.daterangepicker').daterangepicker($settings);
+                jQuery.validator.methods['date'] = function (value, element) { return true; }
 			</script>
 		";
         return $html;
